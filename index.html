@@ -8,7 +8,36 @@
 </head>
 
 <body>
-	<div id="app"></div>
+	<div id="app">
+    <table>
+      <thead>
+        <tr>
+          <th class="id">ID</th>
+          <th class="comment">コメント</th>
+          <th class="state">状態</th>
+          <th class="button">-</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in todos", v-bind:key="item.id">
+          <th>{{ item.id }}</th>
+          <td>{{ item.comment }}</td>
+          <td class="state">
+            <button v-on:click="doChangeState">{{ item.state }}</button>
+          </td>
+          <td class="button">
+            <button v-on:click.ctrl="doRemove">削除</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h2>新しい作業の追加</h2>
+    <form class="add-form" v-on:submit.prevent="doAdd">
+      コメント<input type="text" ref="comment">
+      <button type="submit">追加</button>
+    </form>
+	  
+	</div>
 	<!-- built files will be auto injected -->
 </body>
 

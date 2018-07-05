@@ -1,5 +1,3 @@
-import Vue from "vue";
-
 // https://jp.vuejs.org/v2/examples/todomvc.html
 var STORAGE_KEY = "todos-vuejs-demo";
 var todoStorage = {
@@ -16,7 +14,7 @@ var todoStorage = {
   }
 };
 
-const app = new Vue({
+new Vue({
   el: "#app",
   data: {
     // 使用するデータ

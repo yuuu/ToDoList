@@ -18,7 +18,13 @@ new Vue({
   el: "#app",
   data: {
     // 使用するデータ
-    todos: []
+    todos: [],
+    options: [
+      { value: -1, label: "すべて" },
+      { value: 0, label: "作業中" },
+      { value: 1, label: "完了" }
+    ],
+    current: -1
   },
   methods: {
     // 使用するメソッド
@@ -48,6 +54,18 @@ new Vue({
         todoStorage.save(todos);
       },
       deep: true
+    }
+  },
+  computed: {
+    computedTodos: function() {
+      return this.todos.filter(function(el) {
+        return this.current < 0 ? true : this.current == el.state;
+      }, this);
+    },
+    labels: function() {
+      return this.options.reduce(function(a, b) {
+        return Object.assign(a, { [b.value]: b.label });
+      });
     }
   },
   created: function() {

@@ -4,6 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" href="./main.css">
 	<title>CodeSandbox Vue</title>
 </head>
 
@@ -19,14 +20,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in todos", v-bind:key="item.id">
+        <tr v-for="item in todos" v-bind:key="item.id">
           <th>{{ item.id }}</th>
           <td>{{ item.comment }}</td>
           <td class="state">
-            <button v-on:click="doChangeState">{{ item.state }}</button>
+            <button v-on:click="doChangeState(item)">{{ item.state }}</button>
           </td>
           <td class="button">
-            <button v-on:click.ctrl="doRemove">削除</button>
+            <button v-on:click.shift="doRemove(item)">削除</button>
           </td>
         </tr>
       </tbody>

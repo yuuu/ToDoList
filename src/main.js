@@ -50,7 +50,7 @@ new Vue({
       deep: true
     }
   },
-  created() {
+  created: function() {
     this.todos = todoStorage.fetch();
   }
 });
